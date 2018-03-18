@@ -7,7 +7,17 @@ import { AppComponent } from './app.component';
 import { Store } from 'store';
 
 
-const ROUTES: Routes = [];
+const ROUTES: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/auth'
+  },
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  }
+];
 
 @NgModule({
   declarations: [
