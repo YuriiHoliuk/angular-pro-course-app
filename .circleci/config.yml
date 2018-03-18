@@ -57,4 +57,4 @@ workflows:
           - build
         filters:
           branches:
-            - master
+            only: master
