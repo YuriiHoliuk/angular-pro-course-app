@@ -45,7 +45,7 @@ jobs:
       - checkout
       - run: yarn build
       - run: firebase use default
-      - run: firebase deploy --token=$FIREBASE_TOKEN --non-interactive
+      - run: firebase deploy --token=$FIREBASE_TOKEN --non-interactiv
 
 workflows:
   version: 2
