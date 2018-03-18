@@ -9,6 +9,5 @@ import { Store } from 'store';
 export class AppComponent {
   title$ = this.store.select('title');
 
-  constructor(private store: Store) {
-  }
+  constructor(private store: Store) {}
 }
