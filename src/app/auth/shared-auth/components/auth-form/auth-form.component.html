@@ -17,6 +17,14 @@
         formControlName="password">
     </label>
 
+    <div class="error" *ngIf="shouldShowEmailError">
+      Email format is invalid
+    </div>
+
+    <div class="error" *ngIf="shouldShowPasswordError">
+      Password is required
+    </div>
+
     <ng-content select=".error"></ng-content>
 
     <div class="auth-form__action">

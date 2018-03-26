@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-auth-form',
@@ -14,6 +14,16 @@ export class AuthFormComponent {
     email: ['', Validators.email],
     password: ['', Validators.required]
   });
+
+  get shouldShowEmailError(): boolean {
+    const control: AbstractControl = this.form.get('email');
+    return control.touched && control.hasError('email');
+  }
+
+  get shouldShowPasswordError(): boolean {
+    const control: AbstractControl = this.form.get('password');
+    return control.touched && control.hasError('required');
+  }
 
   constructor(private fb: FormBuilder) { }
 

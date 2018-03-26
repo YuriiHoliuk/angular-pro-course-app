@@ -4,11 +4,7 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "module": "es2015",
-    "types": [],
-    "paths": {
-      "store": ["app/services/store.ts"],
-      "images": ["app/assets/img"]
-    }
+    "types": []
   },
   "exclude": [
     "test.ts",

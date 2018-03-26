@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { AuthService } from '../../../shared-auth/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,18 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
-  constructor() { }
+  error: string;
 
-  register(value) {
-    console.log(value);
+  constructor(private authService: AuthService) { }
+
+  async signUp(event: FormGroup) {
+    const { email, password } = event.value;
+
+    try {
+      await this.authService.signUp(email, password);
+      this.error = null;
+    } catch (error) {
+      this.error = error.message;
+    }
   }
 }

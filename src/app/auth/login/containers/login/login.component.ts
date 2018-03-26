@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../shared-auth/services/auth.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,18 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  constructor() { }
+  error: string;
 
-  login(value) {
-    console.log(value);
+  constructor(private authService: AuthService) { }
+
+  async signIn(event: FormGroup) {
+    const { email, password } = event.value;
+
+    try {
+      await this.authService.signIn(email, password);
+      this.error = null;
+    } catch (error) {
+      this.error = error.message;
+    }
   }
 }

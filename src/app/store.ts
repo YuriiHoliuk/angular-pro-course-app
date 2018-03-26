@@ -3,11 +3,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 
+import { User } from './auth/models/user';
+
 export interface State {
+  user: User;
   [key: string]: any;
 }
 
 const initialState: State = {
+  user: null,
   title: 'Awesome title from store',
 };
 
