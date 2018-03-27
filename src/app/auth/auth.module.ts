@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+// firebase
+import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+// shared modules
 import { SharedAuthModule } from './shared-auth/shared-auth.module';
-import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
 const firebaseConfig: FirebaseAppConfig = {
   apiKey:            'AIzaSyAhkE71poNjGkNZzxnM1NeKKEDNVEcBtbU',
@@ -17,18 +21,23 @@ const firebaseConfig: FirebaseAppConfig = {
 
 const ROUTES: Routes = [
   {
-    path:       '',
-    pathMatch:  'full',
-    redirectTo: 'login'
+    path:       'auth',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+      },
+      {
+        path:         'login',
+        loadChildren: './login/login.module#LoginModule'
+      },
+      {
+        path:         'register',
+        loadChildren: './register/register.module#RegisterModule'
+      },
+    ]
   },
-  {
-    path:         'login',
-    loadChildren: './login/login.module#LoginModule'
-  },
-  {
-    path:         'register',
-    loadChildren: './register/register.module#RegisterModule'
-  }
 ];
 
 @NgModule({
@@ -40,7 +49,6 @@ const ROUTES: Routes = [
     AngularFireDatabaseModule,
     SharedAuthModule.forRoot(),
   ],
-  declarations: []
 })
 export class AuthModule {
 }

@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 
 import { Store } from '../../../store';
 import { User } from '../../models/user';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -17,13 +18,17 @@ export class AuthService {
       }
 
       const user: User = {
-        email: next.email,
-        uid: next.uid,
+        email:         next.email,
+        uid:           next.uid,
         authenticated: true,
       };
 
       this.store.set('user', user);
     }));
+
+  get authState(): Observable<any> {
+    return this.fireAuth.authState;
+  }
 
   constructor(private fireAuth: AngularFireAuth, private store: Store) {
   }
