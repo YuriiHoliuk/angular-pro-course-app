@@ -20,7 +20,6 @@ import { User } from '../../auth/models/user';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  title$: Observable<string>;
   user$: Observable<User>;
 
   private subscription: Subscription;
@@ -31,10 +30,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.authService.auth$.subscribe();
-
-    this.title$ = this.store.select('title');
     this.user$  = this.store.select('user');
+    this.subscription = this.authService.auth$.subscribe();
   }
 
   ngOnDestroy() {
