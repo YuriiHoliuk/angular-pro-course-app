@@ -16,7 +16,9 @@ import { AppComponent } from './containers/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
-const ROUTES: Routes = [];
+const ROUTES: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/schedule' }
+];
 
 @NgModule({
   declarations: [
