@@ -4,15 +4,17 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 
 import { User } from './auth/models/user';
+import { Meal } from './health/models/meal';
 
 export interface State {
   user: User;
+  meals: Meal[];
   [key: string]: any;
 }
 
 const initialState: State = {
   user: null,
-  title: 'Awesome title from store',
+  meals: null,
 };
 
 export class Store {

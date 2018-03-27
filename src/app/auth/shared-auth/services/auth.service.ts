@@ -26,6 +26,10 @@ export class AuthService {
       this.store.set('user', user);
     }));
 
+  get user() {
+    return this.fireAuth.auth.currentUser;
+  }
+
   get authState(): Observable<any> {
     return this.fireAuth.authState;
   }
