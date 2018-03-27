@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MealsComponent } from './containers/meals/meals.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+
+// containers
+import { MealsComponent } from './containers/meals/meals.component';
 
 const ROUTES: Routes = [
   { path: '', component: MealsComponent }
