@@ -1,0 +1,6 @@
+<app-header (logout)="onLogout()" [user]="user$ | async"></app-header>
+<app-navigation *ngIf="(user$ | async)?.authenticated"></app-navigation>
+
+<div class="wrapper">
+    <router-outlet></router-outlet>
+</div>
