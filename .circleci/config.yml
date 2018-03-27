@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build-job:
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn lint
+  deploy-job:
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - run: yarn build
+      - run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build-jod
+      - deploy-job:
+        requires:
+          - build-job
+        filters:
+          branches:
+            only: master
+  test:
+    jobs:
+      - build-job
+
+
+

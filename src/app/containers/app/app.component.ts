@@ -1,11 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
-import { AuthService } from '../../auth/shared-auth/services/auth.service';
-import { Store } from '../../store';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { User } from '../../auth/models/user';
 import { Router } from '@angular/router';
+
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
+// store
+import { Store } from '../../store';
+
+// services
+import { AuthService } from '../../auth/shared-auth/services/auth.service';
+
+// models
+import { User } from '../../auth/models/user';
 
 @Component({
   selector:    'app-root',
