@@ -4,8 +4,12 @@
 
     <p class="list-item__name">{{ item.name }}</p>
     <p class="list-item__ingredients">
-      <span>{{ item.ingredients }}</span>
+      <span *ngIf="hasIngredients(item); else workouts">{{ getIngredients(item) | join }}</span>
     </p>
+
+    <ng-template #workouts>
+      <span>{{ item | workout }}</span>
+    </ng-template>
 
   </a>
 
